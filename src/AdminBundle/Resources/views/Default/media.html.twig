@@ -1,0 +1,137 @@
+{% extends '::base.html.twig' %}
+{% block title %}إدارة الميديا{% endblock %}
+{% block activeMedia %} class="active" {% endblock %}
+
+{% block body -%}
+    {% for media in media_list %}
+        <div class="modal fade  {{'class'~media.id  }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"> حذف ميديا </h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <p>  هل أنت متأكد من رغبتك في حذف الميديا ؟ </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">إلغاء</button>
+                        <a href="{{ path('delete_media_from_list' ,{'id' : media.id ,'from':'get_media'}) }}" class="btn btn-danger">حذف</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+   <div id="page-wrapper">
+       <div class="container-fluid">
+           <section class="content">
+               <div class="row">
+                   <div class="col-lg-12">
+                       <ol class="breadcrumb">
+                           <li class="active">
+                               <a href="#"><i class="fa fa-shopping-cart" style="margin-left: 5px;"></i>   إدارة الميديا
+                               </a>
+                           </li>
+
+                           <li>
+                               <i class="fa fa-th-list"></i> قائمة الميديا
+                           </li>
+                       </ol>
+                   </div>
+               </div>
+
+               <div class="row">
+                   <div class="col-lg-12">
+                       <div class="frame">
+                           <h3>تفاصيل الميديا</h3>
+                           <div class="box">
+
+                               <div class="box-body">
+                                   <table id="example1" class="table table-bordered table-striped">
+                                       <thead>
+                                       <th >#</th>
+                                       <th >معاينة الصورة </th>
+                                       <th> المادة</th>
+                                       <th>البائع</th>
+                                       <th>محذوف</th>
+                                       <th >Action</th>
+                                       </thead>
+                                       <tbody>
+
+                                       {% for media in media_list %}
+                                           <tr>
+                                               <td class="col-md-1">{{ media.id }}</td>
+                                               <td class="col-md-4"><img src="{{ asset(''~media.path) }}" width="100px" height="100px" ></td>
+                                               <td><a href="{{ path('show_product',{'id':media.product.id}) }}">{{ media.product.name }}</a> </td>
+                                               <td><a href="{{ path('show_user',{'id':media.product.seller.id}) }}">{{ media.product.seller.username }}</a> </td>
+                                               <td>
+                                               {% if media.activated==0 %}
+                                                <span class="label label-danger">نعم</span>
+                                               {% else %}
+                                                   <span class="label label-success">لا</span>
+                                               {% endif %}
+                                               </td>
+                                               <td>
+                                               {% if media.activated==1 %}
+                                                    <button class="btn btn-danger" data-toggle="modal" data-target=".{{'class'~media.id }}" ><i class="fa fa-trash-o"></i></button>
+                                               {% else %}
+                                                  <a class="btn btn-primary" href="{{ path('activate_media',{'id':media.id,'from':'show_product'}) }}" >إعادة النشر</a>
+                                               {% endif %}
+                                               </td>
+
+
+                                           </tr>
+                                       {% endfor %}
+                                       </tbody>
+                                       <tfoot>
+                                       <tr>
+                                           <th >#</th>
+                                           <th >معاينة الصورة </th>
+                                           <th> المادة</th>
+                                           <th>البائع</th>
+                                           <th>محذوف</th>
+                                           <th>Action</th>
+                                       </tr>
+                                       </tfoot>
+                                   </table>
+                               </div><!-- /.box-body -->
+                           </div><!-- /.box -->
+                       </div>
+                   </div>
+               </div>
+           </section><!-- /.content -->
+       </div>
+
+   </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.bootstrap.min.js') }}"></script>
+
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+
+                language: {
+                    "sProcessing":   "جارٍ التحميل...",
+                    "sLengthMenu":   "أظهر _MENU_ مدخلات",
+                    "sZeroRecords":  "لم يعثر على أية سجلات",
+                    "sInfo":         "إظهار _START_ إلى _END_ من أصل _TOTAL_ مدخل",
+                    "sInfoEmpty":    "يعرض 0 إلى 0 من أصل 0 سجل",
+                    "sInfoFiltered": "(منتقاة من مجموع _MAX_ مُدخل)",
+                    "sInfoPostFix":  "",
+                    "sSearch":       "ابحث",
+                    "sUrl":          "",
+                    "oPaginate": {
+                        "sFirst":    "الأول",
+                        "sPrevious": "السابق",
+                        "sNext":     "التالي",
+                        "sLast":     "الأخير"
+                    }
+                }
+            });
+
+        });
+    </script>
+{% endblock %}

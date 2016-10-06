@@ -1,0 +1,5 @@
+services:
+
+    snap_sell_fcm_message:
+        class: AppBundle\FCMService\FCMMessage
+

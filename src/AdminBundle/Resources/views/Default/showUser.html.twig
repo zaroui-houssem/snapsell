@@ -1,0 +1,392 @@
+{% extends '::base.html.twig' %}
+{% block title %}تفاصيل المستعمل{% endblock %}
+{% block activeUser %} class="active" {% endblock %}
+{% block body -%}
+    <div class="modal fade delete-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"> حذف {{ user_s.username }}</h4>
+                </div>
+
+                <div class="modal-body">
+                    <p>  هل أنت متأكد من رغبتك في حذف  {{ user_s.username }} ؟ </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">إلغاء</button>
+                    <a href="{{ path('delete_user' ,{'id' : user_s.id}) }}" class="btn btn-danger">حذف</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="page-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <ol class="breadcrumb">
+
+                        <li class="active">
+                            <a href="{{ path('get_users') }}">
+                                <i class="fa fa fa-user" style="margin-left: 5px;"></i>قائمة المستعملين
+                            </a>
+                        </li>
+                        <li>
+                            <i class="fa fa-th-list"></i> تفاصيل المستعمل
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>تفاصيل المستعمل</h3>
+                    <div class="form-group" style="float: left;">
+                        <a href="{{ path('update_user' ,{'id':user_s.id}) }}" class="btn btn-add">تحديث</a>
+                        {% if user_s.activated==1 %}
+                        <button data-toggle="modal" data-target=".delete-modal" class="btn btn-danger" >حذف</button>
+                        {% else %}
+                            <a href="{{ path('user_activation',{'id':user_s.id}) }}" class="btn btn-primary btn-sm" style="padding-left: 20px;padding-right: 20px;">تفعيل الحساب</a>
+                        {% endif %}
+                    </div>
+                    <p  > </p>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-6">
+                    {% for message in app.session.flashbag.get('info') %}
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row" style="margin-top: 30px;">
+
+                <!-- ici coté droite de profile -->
+                <div class="col-md-4">
+                    <div class="col-md-12 profile-frame">
+                        {% if  user_s.avatar is null %}
+                        <img src="{{ asset('images/pic.png') }}" title="User Picture" class="userpicture center-block" id="showPic">
+                        {% else  %}
+                        <img src="{{ asset(''~user_s.avatar.path) }}" title="User Picture" class="userpicture center-block" id="showPic">
+                       {% endif %}
+                        <div class="col-md-12 text-center">
+                            {% if stars!=0 %}
+                                {% for i in 1..stars %}
+                                    <i class="fa fa-star gold"></i>
+                                {% endfor %}
+                            {% endif %}
+
+                            {% if half == 1 %}
+                              <i class="fa fa-star-half-o gold"></i>
+                            {% endif %}
+                             {% for i in 1..vide %}
+                                <i class="fa fa-star-o gold"></i> <!-- VIDE -->
+                             {% endfor %}
+
+
+                        </div>
+                        <br>
+                        <p>
+                        </p>
+                        <br>
+                        <div class="form-group">
+                            <label >اسم المستعمل</label>
+                            <input type="text" class="form-control" placeholder="{{ user_s.username }}"  disabled>
+                        </div>
+                        <div class="form-group">
+                            <label >رقم الهاتف</label>
+                            <input type="text" class="form-control"  placeholder="{{ user_s.phoneNumber }}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label >حالة الحساب</label>
+                            {% if user_s.activated==1 %}
+                            <input type="text" class="form-control" placeholder="مفعل" disabled>
+                            {% else %}
+                            <input type="text" class="form-control" placeholder="غير مفعل" disabled>
+                            {% endif %}
+                        </div>
+
+                        <div class="col-sm-12" >
+                            <div class="btn-group-sm btn-group-justified  center-block" role="group" aria-label="...">
+                                {% if user_s.facebookProfile is not null  %}
+                                <a type="button" class="btn btn-sm btn-primary " href="{{ path('redirectToProfile' , {'type':'facebook','id':user_s.id} ) }}"> <i class="fa fa-facebook"></i></a>
+                                {% else  %}
+                                <a type="button" class="btn btn-sm btn-primary " href="#" disabled> <i class="fa fa-facebook"></i></a>
+                                {% endif %}
+
+                                {% if user_s.twitterProfile is not null  %}
+                                <a type="button" class="btn btn-sm btn-info" href="{{ path('redirectToProfile' , {'type':'twitter','id':user_s.id} ) }}"><i class="fa fa-twitter"></i> </a>
+                                {% else  %}
+                                <a type="button" class="btn btn-sm btn-info" disabled=""><i class="fa fa-twitter"></i> </a>
+                                {% endif %}
+
+                                {% if user_s.googleProfile is not null  %}
+                                <a type="button" class="btn btn-sm btn-danger" href="{{ path('redirectToProfile' , {'type':'google','id':user_s.id} ) }}"><i class="fa fa-google-plus"></i> </a>
+                                {% else %}
+                                <a type="button" class="btn btn-sm btn-danger" disabled><i class="fa fa-google-plus"></i> </a>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ici coté Gauche de profile -->
+                <div class="col-md-8">
+                    <div class="col-md-12">
+                        <div class="col-md-12">
+                            <h3>العنوان</h3>
+                        </div>
+                        <div class="col-md-12 form-frame">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="pac-input" placeholder="{{ user_s.address }}" disabled>
+                            </div>
+                            <input id="lng" type="hidden" value="{{ user_s.longitude }}">
+                            <input id="lat" type="hidden" value="{{ user_s.latitude }}">
+                            <div class="form-group">
+                                <div id="map"></div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row" style="margin-top: 30px;">
+                <div class="col-lg-12">
+                    <ul class="nav nav-tabs">
+                        <li role="presentation" class="active">
+                            <a href="#products" aria-controls="products" role="tab" data-toggle="tab">المواد المعروضة</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#requests" aria-controls="requests" role="tab" data-toggle="tab">طلبات الشراء الواردة</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#offers" aria-controls="offers" role="tab" data-toggle="tab">طلبات الشراء الصادرة</a>
+                        </li>
+
+
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="products">
+                                <div class="row">
+                                {% if products|length==0 %}
+                                    <p>لم يقم بعرض اي مادة</p>
+                                {% endif %}
+                                <div class="col-lg-12">
+
+                                {% for product in products %}
+                                    <div class="col-lg-3">
+                                        <div class="thumbnail">
+                                            {% set firstItem = product.listMedia|first %}
+                                            {% if firstItem.activated==1 %}
+                                            <img src="{{ asset(''~product.listMedia|first.path) }}" alt="{{ product.listMedia[0].name }}" width="80" height="120">
+                                            {% else %}
+
+                                                <img src="{{ asset('images/default-placeholder.png') }}" width="70%" height="120px" >
+
+                                            {% endif %}
+                                            <div class="caption">
+                                                <a href="{{ path('show_product', {'id' : product.id}) }}"><h4>{{ product.name }}</h4> </a>
+                                                <p>{{ product.price|number_format(0, '.')}}</p>
+                                                <a class="btn btn-primary" href="{{path('show_product' ,{id :product.id}) }}">التفاصيل</a>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                {% endfor %}
+
+                                    </div>
+                                </div>
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="requests">
+                            <div class="box">
+
+                                <div class="box-body">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th> المادة</th>
+                                            <th>المشتري</th>
+                                            <th>تاريخ الطلب</th>
+                                            <th>السعر</th>
+                                            <th>قيمة العرض</th>
+                                            <th>نوع العرض</th>
+                                            <th>الحالة</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for offer in offers %}
+                                            <tr>
+                                                <td><a href="{{ path('show_product' ,{'id':offer.product.id}) }}" >{{ offer.product.name }}</a></td>
+                                                <td><a href="{{ path('show_user' ,{'id':offer.buyer.id}) }}" >{{ offer.buyer.username }}</a></td>
+                                                <td>{{ offer.date|date("Y/m/d") }}</td>
+                                                <td>{{ offer.product.price|number_format(0, '.') }}</td>
+                                                <td>{{ offer.value }}</td>
+                                                <td>{{ offer.product.offerType }}</td>
+                                                <td>
+                                                    {% if  offer.accept==1 %}
+                                                        <span class="label label-success">1</span>
+                                                    {% else %}
+                                                        <span class="label label-danger">0</span>
+                                                    {% endif %}
+
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th> المادة</th>
+                                            <th>المشتري</th>
+                                            <th>تاريخ الطلب</th>
+                                            <th>السعر</th>
+                                            <th>قيمة العرض</th>
+                                            <th>نوع العرض</th>
+                                            <th>الحالة</th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="offers">
+                            <div class="box">
+
+                                <div class="box-body">
+                                    <table id="example2" class="table table-bordered table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th> المادة</th>
+                                            <th>البائع</th>
+                                            <th>تاريخ الطلب</th>
+                                            <th>السعر</th>
+                                            <th>قيمة العرض</th>
+                                            <th>نوع العرض</th>
+                                            <th>الحالة</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for request in requests %}
+                                            <tr>
+                                                <td><a href="{{ path('show_product' ,{'id':request.product.id}) }}" >{{ request.product.name }}</a></td>
+                                                <td><a href="{{ path('show_user' ,{'id':request.product.seller.id}) }}" >{{ request.product.seller.username }}</a></td>
+                                                <td>{{ request.date|date("Y/m/d") }}</td>
+                                                <td>{{ request.product.price|number_format(0, '.') }}</td>
+                                                <td>{{ request.value }}</td>
+                                                <td>{{ request.product.offerType }}</td>
+                                                <td>
+                                                    {% if  request.accept==1 %}
+                                                        <span class="label label-success">1</span>
+                                                    {% else %}
+                                                        <span class="label label-danger">0</span>
+                                                    {% endif %}
+
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th> المادة</th>
+                                            <th>البائع</th>
+                                            <th>تاريخ الطلب</th>
+                                            <th>السعر</th>
+                                            <th>قيمة العرض</th>
+                                            <th>نوع العرض</th>
+                                            <th>الحالة</th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div>
+
+                    </div>
+            </div>
+            </div>
+
+        </div>
+
+    </div>
+        <!-- /.container-fluid -->
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.bootstrap.min.js') }}"></script>
+
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                language: {
+                    "sProcessing":   "جارٍ التحميل...",
+                    "sLengthMenu":   "أظهر _MENU_ مدخلات",
+                    "sZeroRecords":  "لم يعثر على أية سجلات",
+                    "sInfo":         "إظهار _START_ إلى _END_ من أصل _TOTAL_ مدخل",
+                    "sInfoEmpty":    "يعرض 0 إلى 0 من أصل 0 سجل",
+                    "sInfoFiltered": "(منتقاة من مجموع _MAX_ مُدخل)",
+                    "sInfoPostFix":  "",
+                    "sSearch":       "ابحث",
+                    "sUrl":          "",
+                    "oPaginate": {
+                        "sFirst":    "الأول",
+                        "sPrevious": "السابق",
+                        "sNext":     "التالي",
+                        "sLast":     "الأخير"
+                    }
+                }
+            });
+            $("#example2").DataTable({
+                language: {
+                    "sProcessing":   "جارٍ التحميل...",
+                    "sLengthMenu":   "أظهر _MENU_ مدخلات",
+                    "sZeroRecords":  "لم يعثر على أية سجلات",
+                    "sInfo":         "إظهار _START_ إلى _END_ من أصل _TOTAL_ مدخل",
+                    "sInfoEmpty":    "يعرض 0 إلى 0 من أصل 0 سجل",
+                    "sInfoFiltered": "(منتقاة من مجموع _MAX_ مُدخل)",
+                    "sInfoPostFix":  "",
+                    "sSearch":       "ابحث",
+                    "sUrl":          "",
+                    "oPaginate": {
+                        "sFirst":    "الأول",
+                        "sPrevious": "السابق",
+                        "sNext":     "التالي",
+                        "sLast":     "الأخير"
+                    }
+                }
+            });
+
+        });
+    </script>
+    <script>
+
+        function initialisation() {
+
+            var myLatLng = { lat: {{ latitude }} , lng: {{ longitude }} };//ici il faut changer ces Lat Lng variable from data base
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 17,
+                center: myLatLng
+            });
+
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAB53lciwi87bWa4njroIBeKN4vMfatA6E&callback=initialisation">
+    </script>
+{% endblock %}

@@ -1,0 +1,50 @@
+
+get_user:
+    path:     /users/{id}
+    defaults: { _controller: UserBundle:User:get }
+    methods:  [GET]
+get_me:
+    path:     /users/{id}/me
+    defaults: { _controller: UserBundle:User:getMe }
+    methods:  [GET]
+
+update_user:
+    path:     /users/{id}
+    defaults: { _controller: UserBundle:User:update }
+    methods:  [PUT]
+
+delete_user:
+    path:     /users/{id}
+    defaults: { _controller: UserBundle:User:delete }
+    methods:  [Delete]
+
+get_near_products:
+    path:     /nearproducts/{latitude}/{longitude}/
+    defaults:  { _controller: UserBundle:User:getNearProducts }
+    methods:  [GET]
+
+change_avatar:
+    path:     /users/{id}/change_avatar
+    defaults:  { _controller: UserBundle:User:changeAvatar }
+    methods:  [POST]
+
+post_vote:
+    path:    /users/{id}/votes
+    defaults:  { _controller: UserBundle:User:postUserVote }
+    methods:  [POST]
+
+
+get_user_products:
+    path:   /users/{id}/products
+    defaults: { _controller: UserBundle:User:getUserProducts }
+    methods: [GET]
+
+get_user_offers:
+    path:   /users/{id}/offers
+    defaults: { _controller: UserBundle:User:getUserOffers }
+    methods: [GET]
+
+get_accepted_user_offers:
+    path:   /users/{id}/accepted_offers
+    defaults: { _controller: UserBundle:User:getUserAcceptedOffers }
+    methods: [GET]

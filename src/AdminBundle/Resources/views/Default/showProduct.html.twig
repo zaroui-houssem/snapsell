@@ -1,0 +1,325 @@
+{% extends '::base.html.twig' %}
+{% block title %}تفاصيل المادة{% endblock %}
+{% block activeProduct %} class="active" {% endblock %}
+{% block body -%}
+
+    {% for comment in comments %}
+        <div class="modal fade  {{'class'~comment.id  }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"> حذف تعليق </h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <p>  هل أنت متأكد من رغبتك في حذف التعليق ؟ </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">إلغاء</button>
+                        <a href="{{ path('delete_comment' ,{'id' : comment.id}) }}" class="btn btn-danger">حذف</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade  update{{'class'~comment.id  }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+            <form class="form-horizontal" role="form" method="POST" action="{{ path('update_comment',{'id':comment.id,'from':'show_product'}) }}">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">   تحديث تعليق {{ comment.user.username }}</h4>
+                    </div>
+
+                    <div class="modal-body">
+                            <div class="form-group">
+                                <label for="activated" class="control-label col-lg-2">تغيير الحالة</label>
+                                <div class="col-lg-10">
+                                   <select class="form-control" id="activated" name="activated">
+                                       <option value="1" >منشور</option>
+                                       <option value="0">غير منشور</option>
+                                   </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="value" class="control-label col-lg-2">تعليق جديد</label>
+                                <div class="col-lg-10">
+                                    <textarea class="form-control"  name="value" id="value" ></textarea>
+                                </div>
+                            </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">إلغاء</button>
+                        <button type="submit" class="btn btn-add">تحديث</button>
+                    </div>
+
+                </div>
+            </div>
+            </form>
+        </div>
+    {% endfor %}
+
+    <div class="modal fade delete-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"> حذف {{ product.name }}</h4>
+                </div>
+
+                <div class="modal-body">
+                    <p>  هل أنت متأكد من رغبتك في حذف  {{ product.name }} ؟ </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">إلغاء</button>
+                    <a href="{{ path('delete_product' ,{'id' : product.id}) }}" class="btn btn-danger">حذف</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <section class="content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ol class="breadcrumb">
+
+                        <li>
+                            <a href="{{ path('get_products') }}">
+                                <i class="fa fa-shopping-cart" style="margin-left: 5px;"></i>قائمة المواد
+                            </a>
+                        </li>
+                        <li>
+                            <i class="fa fa-th-list"></i> تفاصيل المادة
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <h3>تفاصيل المادة</h3>
+                </div>
+                <div class="col-lg-6 col-lg-offset-2">
+                    {% for message in app.session.flashbag.get('info') %}
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row"  style="-top: 30px;">
+                <div class="col-lg-12">
+
+                    <ul class="nav nav-tabs">
+                        <li role="presentation" class="active">
+                            <a href="#description" aria-controls="description" role="tab" data-toggle="tab">تفاصيل المادة</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">تعليقات</a></li>
+                        <li role="presentation">
+                            <a href="#media" aria-controls="media" role="tab" data-toggle="tab">ميديا</a>
+                        </li>
+
+                    </ul>
+
+
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="description">
+
+                            <form  class="form-horizontal" role="form" style="margin-right: -20px;">
+
+                                <div class="form-group">
+                                    <label for="name" class="control-label col-lg-2">إسم المادة </label>
+                                    <div class="col-lg-9">
+                                        <input type="text" class="form-control" value="{{ product.name }}" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="control-label col-lg-2">الوصف </label>
+                                    <div class="col-lg-9">
+                                        <input type="text" class="form-control" value="{{ product.description }}" disabled>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="control-label col-lg-2">نوع العرض</label>
+                                    <div class="col-lg-9">
+                                        <input type="text" class="form-control" value="{{ product.offerType }}" disabled>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="control-label col-lg-2">السعر  </label>
+                                    <div class="col-lg-9">
+                                        <input type="text" class="form-control" value="{{ product.price|number_format(0, '.') }}" disabled>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="control-label col-lg-2">نوع المادة  </label>
+                                    <div class="col-lg-9">
+                                        <input type="text" class="form-control" value="{{ product.hashtags }}" disabled>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="control-label col-lg-2">تاريخ النشر</label>
+                                    <div class="col-lg-9">
+                                        <input type="text" class="form-control" value="{{ product.date|date(" Y/m/d") }}" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="control-label col-lg-2">البائع</label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="control-label col-lg-2">إسم البائع</label>
+                                    <div class="col-lg-9">
+                                       <a href="{{ path('show_user',{'id':product.seller.id}) }}">
+                                           <input type="text" class="form-control" value="{{ product.seller.username }}" readonly style="color: #0d6aad">
+                                       </a>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="control-label col-lg-2">العنوان</label>
+                                    <div class="col-lg-9">
+                                        <input type="text" class="form-control" value="{{ product.seller.address }}" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="control-label col-lg-2">الحالة</label>
+                                    <div class="col-lg-9">
+                                        {% if product.sold_out==1 %}
+                                        <span class="label label-success">مباعة</span>
+                                        {% else  %}
+                                            <span class="label label-danger">غير مباعة</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    {% if product.activated==1 %}
+                                    <button type="button" data-toggle="modal" data-target=".delete-modal" class="btn btn-danger"> حذف </button>
+                                    {% else %}
+                                        <a href="{{ path('activate_product',{'id':product.id}) }}" class="btn btn-primary btn-sm" style="margin-right: 20px;">إعادة نشر</a>
+                                    {% endif %}
+                                    <a href="{{ path('update_product', {'id': product.id }) }}" class="btn btn-add" > تحديث  </a>
+
+                                </div>
+                            </form>
+
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="comments">
+                            {% if comments|length ==0 %}
+                                <p>لا توجد تعليقات</p>
+                            {% else %}
+                            <ul class="media-list">
+
+                                {% for comment in comments %}
+
+                                    <li class="media">
+                                        <div class="media-right media-top">
+                                            {% if comment.user.avatar is null %}
+                                                <a href="#">
+                                                    <img class="media-object img-thumbnail" src="{{ asset('images/pic.png') }}" width="100px" height="140px" >
+
+                                                </a>
+                                                {% else %}
+                                                <a href="#">
+                                                    <img class="media-object img-thumbnail" src="{{ asset(''~comment.user.avatar.path)}}" width="100px" height="140px">
+                                                </a>
+                                                {% endif %}
+
+                                        </div>
+                                            {% if comment.activated==1 %}
+                                            <div class="media-body">
+                                            {% else %}
+                                            <div class="media-body not-activated">
+                                            {% endif %}
+                                            <h4 class="media-heading">{{ comment.user.username }}</h4>
+                                            <p>{{ comment.value }} </p>
+                                            <div class="comments-controls">
+                                                {% if comment.activated==1 %}
+                                                <button class="btn btn-add btn-sm" data-toggle="modal" data-target=".{{'updateclass'~comment.id }}">تحديث</button>
+                                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target=".{{'class'~comment.id }}">حذف</button>
+                                                {% else %}
+                                                    <a href="{{ path('activate_comment',{'id':comment.id,'from':'show_product'}) }}" class="btn btn-primary btn-sm" style="padding-left: 40px;padding-right: 40px;">إعادة النشر</a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+
+
+                        <div role="tabpanel" class="tab-pane" id="media">
+
+                            <table class="table table-bordered table-hover table-condensed">
+                                <thead>
+                                <th class="col-md-1">#</th>
+                                <th class="col-md-4">Image preview </th>
+                                <th> Image url</th>
+                                <th>محذوف</th>
+                                <th class="col-md-1">Action</th>
+                                </thead>
+                                <tbody>
+                                {% for media in product.listMedia %}
+
+                                <tr>
+                                    <td class="col-md-1">{{ media.id }}</td>
+                                    {% if media.activated==0 %}
+                                    <td class="col-md-4"><img src="{{ asset('images/default-placeholder.png') }}" width="100px" height="100px" ></td>
+                                    {% else %}
+                                    <td class="col-md-4"><img src="{{ asset(''~media.path) }}" width="100px" height="100px" ></td>
+                                    {% endif %}
+                                    <td><input type="text" class="form-control" disabled value="{{ media.web_path }}"></td>
+                                    <td>
+                                    {% if media.activated==0 %}
+                                        <span class="label label-danger">نعم</span>
+                                    {% else %}
+                                        <span class="label label-success">لا</span>
+                                    {% endif %}
+                                    </td>
+                                    {% if media.activated==0 %}
+                                        <td class="col-md-1"><a class="btn btn-primary" href="{{ path('activate_media',{'id':media.id,'from':'show_product'}) }}" >إعادة النشر</a></td>
+                                    {% else %}
+                                        <td class="col-md-1"><a class="btn btn-danger" href="{{ path('delete_media_from_list' ,{'id':media.id ,'from':'show_product'}) }}" >
+                                                <i class="fa fa-trash-o"></i></a></td>
+                                    {% endif %}
+
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                                {{ form_start(mediaForm, {'action': path('add_media',{'id_product':product.id}), 'method': 'POST'}) }}
+                                <div class="form-group">
+                                    <label class="control-label col-lg-12">اضف صورة او مقطع فيديو</label>
+                                    <div class="col-lg-6">
+                                        {{ form_widget(mediaForm.path) }}
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-offset-6">
+                                        <input type="submit" class="btn btn-add" value="حفظ">
+                                    </div>
+                                </div>
+                                {{ form_end(mediaForm)  }}
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        </div>
+
+    </div>
+{% endblock %}
+

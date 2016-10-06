@@ -1,0 +1,15 @@
+
+delete_media_from_list:
+     path:      /media/{id}/{from}/remove
+     defaults:  { _controller: AdminBundle:Media:delete }
+     methods:   GET
+
+get_media:
+     path:      /media
+     defaults:  { _controller: AdminBundle:Media:getAll }
+     methods:   GET
+
+activate_media:
+     path:      /media/{id}/{from}/activate
+     defaults:  { _controller: AdminBundle:Media:activate }
+     methods:   GET

@@ -1,0 +1,15 @@
+services:
+
+   snap_sell_user_provider:
+      class: UserBundle\Security\UserProvider\UserProvider
+      arguments: ['@doctrine.orm.entity_manager']
+
+   wsse.security.authentication.listener:
+      class: UserBundle\Security\Firewall\wsseListener
+      arguments: ['@security.token_storage', '@security.authentication.manager']
+      public: false
+
+   wsse.security.authentication.provider:
+      class: UserBundle\Security\Authentication\Provider\AuthenticationProvider
+      arguments: ['@snap_sell_user_provider', %kernel.cache_dir%/security/nonces]
+      public: false

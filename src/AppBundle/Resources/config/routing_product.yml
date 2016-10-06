@@ -1,0 +1,17 @@
+
+search_product:
+    path: products/search
+    defaults: { _controller: AppBundle:Search:search }
+    methods: [POST]
+
+products :
+    type: rest
+    resource:     "AppBundle:ProductRest"
+
+get_similar_products:
+    path:  products/{id}/similar_products
+    defaults:  { _controller: AppBundle:Search:getSimilarProduct }
+    methods:  [GET]
+
+
+

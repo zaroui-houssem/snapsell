@@ -1,0 +1,8 @@
+services:
+
+     snapsellwebservice.redirection_listener:
+         class: AdminBundle\AdminListener\RedirectionListener
+         arguments: ['@router','@session']
+         scope:   prototype
+         tags:
+            - {name: kernel.event_listener, event: kernel.request, method: onKernelRequest}

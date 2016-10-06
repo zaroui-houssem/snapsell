@@ -1,0 +1,20 @@
+postUserComments:
+
+    path:     /products/{id}/comments
+    defaults: { _controller: AppBundle:Comment:postProductsComments }
+    methods:  [POST]
+
+putUserComments:
+    path:     /comments/{id}
+    defaults: { _controller: AppBundle:Comment:putComment }
+    methods:  [PUT]
+
+deleteUserComments:
+    path:     /comments/{id}
+    defaults: { _controller: AppBundle:Comment:deleteComment }
+    methods:  [DELETE]
+
+get_comment:
+    path:      /comments/{id}
+    defaults:  { _controller: AppBundle:Comment:getComment }
+    methods:   [GET]

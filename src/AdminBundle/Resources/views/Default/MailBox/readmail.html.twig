@@ -1,0 +1,191 @@
+
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>{{ message.sender.username }}</title>
+
+      <!-- Bootstrap Core CSS -->
+      <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
+      <!-- Bootstrap Core CSS RTL-->
+      <link href="{{ asset('css/bootstrap-rtl.min.css') }}" rel="stylesheet">
+
+      <!-- Custom CSS -->
+
+      <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet">
+      <link href="{{ asset('css/sb-admin-rtl.css') }}" rel="stylesheet">
+      <link href="{{ asset('css/users.css') }}" rel="stylesheet">
+      <link rel="stylesheet" href="{{ asset('css/AdminLTE.min.css') }}">
+
+      <link rel="stylesheet" href="{{ asset('css/skin-blue.min.css') }}">
+      <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet">
+      <link href="{{ asset('css/sb-admin-rtl.css') }}" rel="stylesheet">
+
+      <!-- Custom Fonts -->
+      <link href="{{ asset('font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+      {% block stylesheet %} {% endblock %}
+      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
+
+  </head>
+  <body class="skin-blue">
+  <div id="wrapper" >
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="{{ path('get_users') }}" style="margin-left:20px;">Snapsell</a>
+          </div>
+          <!-- Top Menu Items -->
+          <ul class="nav navbar-left top-nav" style="margin-left: 10px;">
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ user.username }} <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li>
+                          <a href="{{ path('show_user',{'id': user.id}) }}"><i class="fa fa-fw fa-user"></i> الحساب </a>
+                      </li>
+                      <li>
+                          <a href="{{ path('mail_box') }}"><i class="fa fa-fw fa-envelope"></i> صندوق الرسائل </a>
+                      </li>
+                      <li>
+                          <a href="{{ path('update_user',{'id': user.id}) }}"><i class="fa fa-fw fa-gear"></i> الإعدادات </a>
+                      </li>
+                      <li class="divider"></li>
+                      <li>
+                          <a href="{{ path('logout') }}"><i class="fa fa-fw fa-power-off"></i>  تسجيل الخروج </a>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
+          <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+          <div class="collapse navbar-collapse navbar-ex1-collapse">
+              <ul class="nav navbar-nav side-nav" id="sidenav">
+
+                  <li {%block activeUser %}{% endblock %}>
+                      <a href="javascript:;"  data-toggle="collapse" data-target="#sub_menu_user"><i class="fa fa-fw fa-user"></i> إدارة المستعملين<i class="fa fa-fw fa-caret-down"></i></a>
+                      <ul id="sub_menu_user" class="collapse">
+                          <li {%block activeNewUser %}{% endblock %}>
+                              <a href="{{ path('new_user') }}"><i class="fa fa-pencil " style="padding-left: 5px;"></i>إضافة مستعمل</a>
+                          </li>
+                          <li {%block activeListUsers %}{% endblock %}>
+                              <a href="{{ path('get_users') }}"><i class="fa fa-th-list" style="padding-left: 5px;"></i>قائمة المستعملين</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li{%block activeProduct %}{% endblock %}>
+                      <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-shopping-cart" ></i> إدارة المواد  <i class="fa fa-fw fa-caret-down"></i></a>
+                      <ul id="demo" class="collapse">
+                          <li {%block activeNewProduct %}{% endblock %}>
+                              <a href="{{ path('new_product') }}"><i class="fa fa-pencil " style="padding-left: 5px;"></i> إضافة مادة</a>
+                          </li>
+                          <li {%block activeListProducts %}{% endblock %}>
+                              <a href="{{ path('get_products') }}"><i class="fa fa-th-list" style="padding-left: 5px;"></i>  قائمة المواد</a>
+                          </li>
+                      </ul>
+                  </li>
+
+                  <li class="active">
+                      <a href="javascript:;"  data-toggle="collapse" data-target="#sub_menu_mail"><i class="fa fa-envelope-o" style="margin-right: 3px;margin-left: 5px;"></i> صندوق الرسائل <i class="fa fa-fw fa-caret-down"></i></a>
+                      <ul id="sub_menu_mail" class="collapse">
+                          <li >
+                              <a href="{{ path('compose_mail') }}"><i class="fa fa-pencil " style="padding-left: 5px;"></i>رسالة  جديدة </a>
+                          </li>
+                          <li >
+                              <a href="{{ path('mail_box') }}"><i class="fa fa-th-list" style="padding-left: 5px;"></i>البريد الوارد</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li {% block acivateComment %}{% endblock %}><a href="{{ path('get_comments') }}"><i class="fa fa-comments" style="margin-right: 3px;margin-left: 6px;"></i>إدارة التعليقات</a> </li>
+                  <li {% block acivateMedia %}{% endblock %}><a href="{{ path('get_media') }}"><i class="fa fa-image" style="margin-right: 3px;margin-left: 6px;"></i>إدارة الميديا</a> </li>
+
+              </ul>
+          </div>
+
+      </nav>
+      <div id="page-wrapper">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-lg-12">
+                  <ol class="breadcrumb">
+
+                      <li>
+                          <a href="{{ path('mail_box') }}">
+                              <i class="fa fa-envelope-o" style="margin-left: 5px;"></i>صندوق الرسائل
+                          </a>
+                      </li>
+                      <li>
+                          <i class="fa fa-inbox " ></i>   الوارد
+                      </li>
+                  </ol>
+              </div>
+          </div>
+              <section class="content mailbox">
+                  <div class="row">
+                      <div class="col-md-3">
+                          <a href="{{ path('compose_mail') }}" class="btn btn-primary btn-block margin-bottom"> رسالة  جديدة </a>
+                          <div class="box box-solid">
+                              <div class="box-header with-border">
+                                  <h3 class="box-title">الملفات</h3>
+                              </div>
+                              <div class="box-body no-padding">
+                                  <ul class="nav nav-pills nav-stacked">
+                                      <li class="active"><a href="{{ path('mail_box') }}"><i class="fa fa-inbox"></i> الوارد
+                                              {% if nb_msg_no_read!=0 %}
+                                                  <span class="label label-primary pull-left">{{ nb_msg_no_read }}</span>
+                                              {% endif %}
+                                          </a></li>
+                                      <li><a href="{{ path('sent_messages') }}"><i class="fa fa-envelope-o"></i> المرسل </a></li>
+
+                                  </ul>
+                              </div><!-- /.box-body -->
+                          </div><!-- /. box -->
+
+                      </div><!-- /.col -->
+                      <div class="col-md-9">
+                          <div class="box box-primary">
+                              <div class="box-body no-padding">
+                                  <div class="mailbox-read-info">
+                                      <h3> الموضوع : {{ message.subject }}</h3>
+                                      <h5> من :  {{  message.sender.username }}<span class="mailbox-read-time pull-left">{{ message.date|date('F j, Y')  }} </span></h5>
+                                  </div><!-- /.mailbox-read-info -->
+
+                                  <div class="mailbox-read-message" style="height: 250px;">
+
+                                      <p>{{ message.message }}</p>
+
+                                  </div><!-- /.mailbox-read-message -->
+                              </div><!-- /.box-body -->
+
+                              <div class="box-footer">
+                                  <div class="pull-left">
+                                      <a href="{{ path('delete_mail',{'id':message.id}) }}" class="btn btn-default"><i class="fa fa-trash-o"></i> حذف </a>
+                                      <a href="{{ path('reply',{'id':message.id}) }}" class="btn btn-default"><i class="fa fa-reply"></i> رد </a>
+                                  </div>
+                              </div><!-- /.box-footer -->
+                          </div><!-- /. box -->
+                      </div><!-- /.col -->
+                  </div>
+              </section>
+        </div>
+      </div>
+  </div>
+  <script src="{{ asset('js/jQuery-2.1.4.min.js') }}"></script>
+  <!-- Bootstrap 3.3.5 -->
+  <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+
+  </body>
+  </html>

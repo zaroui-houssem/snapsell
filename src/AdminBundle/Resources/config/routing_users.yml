@@ -1,0 +1,46 @@
+get_users:
+    path:     /users
+    defaults: { _controller: AdminBundle:User:getUsers }
+    methods: [GET]
+
+show_user:
+    path:     /users/{id}/show
+    defaults: { _controller: AdminBundle:User:show }
+    methods:  [GET]
+
+new_user:
+    path:     /users/new
+    defaults: { _controller: AdminBundle:User:new }
+    methods:  [POST,GET]
+
+update_user:
+    path:     /users/{id}/update
+    defaults: { _controller: AdminBundle:User:edit }
+    methods:  [GET, POST]
+
+delete_user:
+    path:     /users/{id}/delete
+    defaults: { _controller: AdminBundle:User:delete }
+    methods:  GET
+
+
+
+get_external_profile:
+    path: /users/{id}/network/{type}
+    defaults:  { _controller: AdminBundle:User:externalProfile }
+    methods:  [GET]
+
+login:
+    path:     /login
+    defaults: { _controller: AdminBundle:Security:login }
+    methods:  [POST,GET]
+
+logout:
+    path:      /
+    defaults: { _controller: AdminBundle:Security:logout }
+    methods:  GET
+
+user_activation:
+    path:     /users/{id}
+    defaults: { _controller: AdminBundle:User:activation }
+    methods:  GET

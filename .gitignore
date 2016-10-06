@@ -1,0 +1,12 @@
+/var/bootstrap.php.cache
+/var/cache/*
+!var/cache/.gitkeep
+/var/logs/*
+!var/logs/.gitkeep
+/bin/
+/vendor/
+/web/bundles/
+/web/uploads
+/var/cache
+/var/logs
+var/sessions/prod/

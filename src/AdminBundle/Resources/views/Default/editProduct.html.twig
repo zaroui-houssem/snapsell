@@ -1,0 +1,81 @@
+{% extends '::base.html.twig' %}
+{% block title %}تحديث مادة {% endblock %}
+{% block activeProduct %} class="active" {% endblock %}
+
+{% block body %}
+    <div id="page-wrapper" xmlns="http://www.w3.org/1999/html">
+        <div class="container-fluid">
+            <section class="content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ol class="breadcrumb">
+
+                        <li class="active">
+                            <a href="{{ path('get_products') }}">
+                                <i class="fa fa-shopping-cart" style="margin-left: 5px;"></i> إدارة المواد
+                            </a>
+                        </li>
+                        <li>
+                            <i class="fa fa-pencil "></i> تحديث مادة
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <h3>تحديث مادة</h3>
+                </div>
+                <div class="col-lg-6 col-lg-offset-2">
+                    {% for message in app.session.flashbag.get('info') %}
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-lg-8 form-frame">
+
+                    {{ form_start(edit_form, {'action': path('update_product' ,{'id':product.id}), 'method': 'POST'}) }}
+                    <div class="form-group">
+                        <label for="name" class="control-label">إسم المادة</label>
+                        {{ form_widget(edit_form.name) }}
+                        {{ form_errors(edit_form.name) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="control-label">السعر</label>
+                        {{ form_widget(edit_form.price) }}
+                        <span style="color: red;"> {{ form_errors(edit_form.price) }} </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="control-label">نوع العرض</label>
+                        {{ form_widget(edit_form.offerType) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="control-label">الوصف</label>
+                        {{ form_widget(edit_form.description) }}
+                        {{ form_errors(edit_form.description) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="control-label">نوع المادة</label>
+                        {{ form_widget(edit_form.hashtags) }}
+                        {{ form_errors(edit_form.hashtags) }}
+                    </div>
+
+
+                    <div class="form-group">
+                        {{ form_widget(edit_form.save, { 'label': 'حفظ' }) }}
+                    </div>
+                    {{ form_end(edit_form)  }}
+
+                </div>
+
+
+            </div>
+        </section>
+        </div>
+    </div>
+
+{% endblock %}

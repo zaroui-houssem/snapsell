@@ -1,0 +1,31 @@
+mail_box:
+    path:        mailbox/
+    defaults:    { _controller: AdminBundle:Message:mailBox }
+    methods:     [GET]
+
+sent_messages:
+    path:        mailbox/sent_messages
+    defaults:    { _controller: AdminBundle:Message:messagesSent }
+    methods:     [GET]
+
+read_mail:
+    path:        mailbox/{id}/read_mail
+    defaults:    { _controller: AdminBundle:Message:readMail }
+    methods:     [GET]
+
+
+compose_mail:
+    path:        mailbox/compose
+    defaults:    { _controller: AdminBundle:Message:compose }
+    methods:     [GET,POST]
+
+delete_mail:
+    path:        mailbox/{id}/delete_mail
+    defaults:    { _controller: AdminBundle:Message:deleteMail }
+    methods:     [GET]
+
+
+reply:
+    path:        mailbox/{id}/reply
+    defaults:    { _controller: AdminBundle:Message:reply }
+    methods:     [POST,GET]

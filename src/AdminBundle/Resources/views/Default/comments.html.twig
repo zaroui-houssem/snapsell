@@ -1,0 +1,170 @@
+{% extends '::base.html.twig' %}
+{% block title %}إدارة التعليقات{% endblock %}
+{% block activeComment %} class="active" {% endblock %}
+
+{% block body -%}
+    {% for comment in comments %}
+        <div class="modal fade  {{'class'~comment.id  }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"> حذف تعليق </h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <p>  هل أنت متأكد من رغبتك في حذف التعليق ؟ </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">إلغاء</button>
+                        <a href="{{ path('delete_comment' ,{'id' : comment.id}) }}" class="btn btn-danger">حذف</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade  update{{'class'~comment.id  }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+            <form class="form-horizontal" role="form" method="POST" action="{{ path('update_comment',{'id':comment.id,'from':'comments'}) }}">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">   تحديث تعليق {{ comment.user.username }}</h4>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="activated" class="control-label col-lg-2">تغيير الحالة</label>
+                                <div class="col-lg-10">
+                                    <select class="form-control" id="activated" name="activated">
+                                        <optgroup>
+                                            <option value="1" >منشور</option>
+                                            <option value="0">غير منشور</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="value" class="control-label col-lg-2">تعليق جديد</label>
+                                <div class="col-lg-10">
+                                    <textarea class="form-control"  name="value" id="value" ></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">إلغاء</button>
+                            <button type="submit" class="btn btn-add">تحديث</button>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    {% endfor %}
+
+    <div id="page-wrapper">
+       <div class="container-fluid">
+           <section class="content">
+               <div class="row">
+                   <div class="col-lg-12">
+                       <ol class="breadcrumb">
+                           <li class="active">
+                               <a href="#"><i class="fa fa-comments" style="margin-left: 5px;"></i>   إدارة التعليقات
+                               </a>
+                           </li>
+
+                           <li>
+                               <i class="fa fa-th-list"></i> قائمة التعليقات
+                           </li>
+                       </ol>
+                   </div>
+               </div>
+
+               <div class="row">
+                   <div class="col-lg-12">
+                       <div class="frame">
+                           <h3>تفاصيل التعليقات</h3>
+                           <div class="box">
+
+                               <div class="box-body">
+                                   <table id="example1" class="table table-bordered table-striped">
+                                       <thead>
+                                       <tr>
+                                           <th> محتوى التعليق</th>
+                                           <th>تاريخ العرض</th>
+                                           <th> المستعمل</th>
+                                           <th>المادة</th>
+                                           <th>Action</th>
+                                       </tr>
+                                       </thead>
+                                       <tbody>
+                                       {% for comment in comments %}
+                                           <tr>
+                                               <td>{{ comment.value }}</td>
+                                               <td>{{ comment.date|date('Y/m/d') }}</td>
+                                               <td><a href="{{ path('show_user' ,{'id':comment.user.id})}}" >{{ comment.user.username }}</a></td>
+                                               <td><a href="{{ path('show_product' ,{'id':comment.product.id})}}" >{{ comment.product.name }}</a></td>
+                                               <td>
+                                                   {% if comment.activated==1 %}
+                                                   <button class="btn btn-add btn-sm" data-toggle="modal" data-target=".{{'updateclass'~comment.id }}"><i class="fa fa-pencil"></i></button>
+                                                   <button class="btn btn-danger"  data-toggle="modal" data-target=".{{'class'~comment.id }}">
+                                                       <i class="fa fa-trash-o"></i></button>
+                                                   {% else %}
+                                                       <a href="{{ path('activate_comment',{'id':comment.id,'from':'comments'}) }}" class="btn btn-primary btn-sm" style="padding-left: 20px;padding-right: 20px;">إعادة النشر</a>
+                                                   {% endif %}
+                                               </td>
+                                           </tr>
+                                       {% endfor %}
+                                       </tbody>
+                                       <tfoot>
+                                       <tr>
+                                           <th> محتوى التعليق</th>
+                                           <th>تاريخ العرض</th>
+                                           <th> المستعمل</th>
+                                           <th>المادة</th>
+                                           <th>Action</th>
+                                       </tr>
+                                       </tfoot>
+                                   </table>
+                               </div><!-- /.box-body -->
+                           </div><!-- /.box -->
+                       </div>
+                   </div>
+               </div>
+           </section><!-- /.content -->
+       </div>
+
+   </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.bootstrap.min.js') }}"></script>
+
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "columnDefs": [
+                    { "width": "25%", "targets": 4 }
+                ],
+                language: {
+                    "sProcessing":   "جارٍ التحميل...",
+                    "sLengthMenu":   "أظهر _MENU_ مدخلات",
+                    "sZeroRecords":  "لم يعثر على أية سجلات",
+                    "sInfo":         "إظهار _START_ إلى _END_ من أصل _TOTAL_ مدخل",
+                    "sInfoEmpty":    "يعرض 0 إلى 0 من أصل 0 سجل",
+                    "sInfoFiltered": "(منتقاة من مجموع _MAX_ مُدخل)",
+                    "sInfoPostFix":  "",
+                    "sSearch":       "ابحث",
+                    "sUrl":          "",
+                    "oPaginate": {
+                        "sFirst":    "الأول",
+                        "sPrevious": "السابق",
+                        "sNext":     "التالي",
+                        "sLast":     "الأخير"
+                    }
+                }
+            });
+
+        });
+    </script>
+{% endblock %}

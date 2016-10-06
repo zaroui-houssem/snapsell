@@ -1,0 +1,3 @@
+product.price.numeric: سعر المادة يجب ان يتكون سوى من أرقام.
+user.phone_number.numeric:    رقم الهاتف يجب ان يتكون سوى من أرقام.
+user.name.nonumber: إسم المستعمل لا يبدأ برقم

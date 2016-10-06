@@ -1,0 +1,9 @@
+users_routing:
+    type: rest
+    resource: "@UserBundle/Resources/config/routing_user.yml"
+    name_prefix:  api_
+
+security_routing:
+    type: rest
+    resource: "@UserBundle/Resources/config/routing_security.yml"
+    name_prefix:  api_

@@ -1,0 +1,38 @@
+# Logfile created on 2016-10-04 17:36:59 +0200 by logger.rb/41954
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-10-04 17:36:59 +0200 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [0ed4d529] Running /usr/bin/env mkdir -p /tmp as root@104.236.218.3
+ DEBUG [0ed4d529] Command: /usr/bin/env mkdir -p /tmp
+  INFO [0ed4d529] Finished in 46.368 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 0.0%
+  INFO Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 100.0%
+  INFO [325fac75] Running /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh as root@104.236.218.3
+ DEBUG [325fac75] Command: /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh
+  INFO [325fac75] Finished in 0.341 seconds with exit status 0 (successful).
+  INFO [c80a8787] Running /usr/bin/env git ls-remote --heads git@bitbucket.org:mostaqlvip/snapsellwebservice.git as root@104.236.218.3
+ DEBUG [c80a8787] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-snapsell_app-production-AS.sh" ; /usr/bin/env git ls-remote --heads git@bitbucket.org:mostaqlvip/snapsellwebservice.git )
+ DEBUG [c80a8787] 	Warning: Permanently added 'bitbucket.org,104.192.143.2' (RSA) to the list of known hosts.
+ DEBUG [c80a8787] 	Permission denied (publickey).
+ DEBUG [c80a8787] 	fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-10-04 17:44:17 +0200 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [c1f0980b] Running /usr/bin/env mkdir -p /tmp as root@104.236.218.3
+ DEBUG [c1f0980b] Command: /usr/bin/env mkdir -p /tmp
+  INFO [c1f0980b] Finished in 17.365 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 0.0%
+  INFO Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 100.0%
+  INFO [297a7d69] Running /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh as root@104.236.218.3
+ DEBUG [297a7d69] Command: /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh
+  INFO [297a7d69] Finished in 0.338 seconds with exit status 0 (successful).
+  INFO [3a50af91] Running /usr/bin/env git ls-remote --heads file:///C:\wamp\www\snapsellwebservice as root@104.236.218.3
+ DEBUG [3a50af91] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-snapsell_app-production-AS.sh" ; /usr/bin/env git ls-remote --heads file:///C:\wamp\www\snapsellwebservice )
+ DEBUG [3a50af91] 	fatal: '/C:wampwwwsnapsellwebservice' does not appear to be a git repository
+ DEBUG [3a50af91] 	fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.

@@ -1,0 +1,19 @@
+update_comment:
+     path:      /comments/{id}/{from}/update
+     defaults:  { _controller: AdminBundle:Comment:update }
+     methods:   POST
+
+delete_comment:
+     path:      /comments/{id}/delete
+     defaults:  { _controller: AdminBundle:Comment:delete }
+     methods:   GET
+
+activate_comment:
+     path:      /comments/{id}/{from}/activate
+     defaults:  { _controller: AdminBundle:Comment:activate }
+     methods:   GET
+
+get_comments:
+     path:      /comments
+     defaults:  { _controller: AdminBundle:Comment:getAll }
+     methods:   GET

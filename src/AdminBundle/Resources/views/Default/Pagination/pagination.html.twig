@@ -1,0 +1,22 @@
+{# default Sliding pagination control implementation #}
+
+{% if pageCount > 1 %}
+    <div class="pagination">
+
+        {% if previous is defined %}
+
+            <a class="btn btn-default btn-sm" href="{{ path(route, query|merge({(pageParameterName): previous})) }}">&lt;</a>
+
+        {% else %}
+            <button class="btn btn-default btn-sm" disabled>&lt;</button>
+        {% endif %}
+
+        {% if next is defined %}
+
+            <a class="btn btn-default btn-sm" href="{{ path(route, query|merge({(pageParameterName): next})) }}">&gt;</a>
+
+        {% else %}
+        <button class="btn btn-default btn-sm" disabled>&gt;</button>
+        {% endif %}
+    </div>
+{% endif %}

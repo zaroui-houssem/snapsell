@@ -1,0 +1,16 @@
+routing_products:
+    resource: "@AdminBundle/Resources/config/routing_product.yml"
+
+routing_users:
+    resource: "@AdminBundle/Resources/config/routing_users.yml"
+
+routing_messages:
+    resource: "@AdminBundle/Resources/config/routing_message.yml"
+
+routing_comments:
+    resource: "@AdminBundle/Resources/config/routing_comment.yml"
+
+routing_media:
+    resource: "@AdminBundle/Resources/config/routing_media.yml"
+
+

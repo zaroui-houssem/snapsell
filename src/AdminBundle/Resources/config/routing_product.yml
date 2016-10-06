@@ -1,0 +1,35 @@
+get_products:
+    path:     /products
+    defaults: { _controller: AdminBundle:Product:getProducts }
+    methods: [GET]
+
+new_product:
+    path:     /products/new
+    defaults: { _controller: AdminBundle:Product:new }
+
+
+show_product:
+    path:     /products/{id}/show
+    defaults: { _controller: AdminBundle:Product:show }
+    methods:  [GET]
+
+update_product:
+    path:     /products/{id}/update
+    defaults: { _controller: AdminBundle:Product:edit }
+    methods:  [GET, POST]
+
+delete_product:
+    path:     /products/{id}/delete
+    defaults: { _controller: AdminBundle:Product:delete }
+    methods:  GET
+
+
+add_media:
+    path:     /products/{id_product}/media
+    defaults: { _controller: AdminBundle:Product:addMedia }
+    methods:  POST
+
+activate_product:
+    path:     /products/{id}/activate
+    defaults: { _controller: AdminBundle:Product:activate }
+    methods:  GET

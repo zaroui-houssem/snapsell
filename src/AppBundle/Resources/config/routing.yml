@@ -1,0 +1,20 @@
+
+products_routing:
+    type: rest
+    resource: "@AppBundle/Resources/config/routing_product.yml"
+    name_prefix:  api_
+comments_routing:
+    type: rest
+    resource: "@AppBundle/Resources/config/routing_comment.yml"
+    name_prefix:  api_
+
+offers_routing:
+    type: rest
+    resource: "@AppBundle/Resources/config/routing_offer.yml"
+    name_prefix:  api_
+
+send_message_to_admin:
+    path:      users/{id}/send_message
+    defaults:  { _controller: AppBundle:Message:send }
+    methods:   POST
+

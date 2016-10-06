@@ -1,0 +1,25 @@
+post_offer:
+    path: /products/{id}/offers
+    defaults: { _controller: AppBundle:Offer:postOffers }
+    methods:  [POST]
+
+user_offers:
+    path: /users/{id}/offers/{slug}
+    defaults: { _controller: AppBundle:Offer:getUserOffers }
+    methods:  [GET]
+
+
+delete_offer:
+    path: /offers/{id}
+    defaults: { _controller: AppBundle:Offer:deleteOffer }
+    methods:  [DELETE]
+
+accept_offer:
+    path: /offers/{id}
+    defaults: { _controller: AppBundle:Offer:acceptOffer }
+    methods:  [PUT]
+
+get_offer:
+    path:   /offers/{id}
+    defaults:  { _controller: AppBundle:Offer:getOffer }
+    methods:   [GET]

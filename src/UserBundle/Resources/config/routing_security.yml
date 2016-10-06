@@ -1,0 +1,14 @@
+user_register:
+    path:     /register
+    defaults: { _controller: UserBundle:Security:signUp }
+    methods:  [POST]
+
+user_login:
+    path:     /login
+    defaults: { _controller: UserBundle:Security:signIn }
+    methods:  [POST]
+
+user_salt:
+    path:     /users/salt/{id}
+    defaults: { _controller: UserBundle:Security:info }
+    methods:  [GET]

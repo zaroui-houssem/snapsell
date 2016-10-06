@@ -1,0 +1,143 @@
+{% extends '::base.html.twig' %}
+{% block title %}إدارة المستعملين{% endblock %}
+{% block activeUser %} class="active" {% endblock %}
+{%block activeListusers %}class="active"{% endblock %}
+{% block body -%}
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <section class="content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ol class="breadcrumb">
+                        <li class="active">
+                            <a href="{{ path('get_users') }}"><i class="fa fa fa-user" style="margin-left: 5px;"></i> إدارة المستعملين
+                            </a>
+                        </li>
+                        <li>
+                            <i class="fa fa-th-list"></i> قائمة المستعملين
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <h3> قائمة المستعملين </h3>
+                </div>
+                <div class="col-lg-6 col-lg-offset-2">
+                        {% for message in app.session.flashbag.get('info') %}
+                            <div class="alert alert-success alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                </div>
+
+            </div>
+            <div class="row" style="margin-top: 30px;">
+                <div class="col-lg-8">
+                    <a href="{{ path('new_user') }}" class="btn btn-add">  إضافة مستعمل <i class="fa fa-pencil "></i></a>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="frame">
+                        <h3>تفاصيل المستعملين</h3>
+                        <div class="box">
+
+                            <div class="box-body">
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>  الإسم </th>
+                                        <th>العنوان</th>
+                                        <th>رقم الهاتف</th>
+                                        <th>طريقة التسجيل</th>
+                                        <th>محذوف</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for user1 in users %}
+                                        {% if user1.id == user.id %}
+                                        <tr class="info">
+                                        {% else  %}
+                                            <tr>
+                                        {% endif %}
+                                            <td><a href="{{ path('show_user' ,{'id': user1.id })}}" >{{ user1.username }}</a></td>
+                                            <td>
+                                                {% if user1.address is null %}
+                                                <span class="label label-danger">يجب إدخال العنوان</span>
+                                                {% else %}
+                                                {{ user1.address }}
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {% if user1.phoneNumber is null %}
+                                                        -
+                                                {% else  %}
+                                                {{ user1.phoneNumber }}
+                                                {% endif %}
+                                            </td>
+                                            <td>{{ user1.signUpType }}</td>
+                                            <td>
+                                                {% if  user1.activated==1 %}
+                                                    <span class="label label-success"> لا</span>
+                                                {% else %}
+                                                    <span class="label label-danger">نعم</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th>  الإسم </th>
+                                        <th>العنوان</th>
+                                        <th>رقم الهاتف</th>
+                                        <th>طريقة التسجيل</th>
+                                        <th>الحالة</th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div>
+                </div>
+            </div>
+
+        </section><!-- /.content -->
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.bootstrap.min.js') }}"></script>
+
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                language: {
+                    "sProcessing":   "جارٍ التحميل...",
+                    "sLengthMenu":   "أظهر _MENU_ مدخلات",
+                    "sZeroRecords":  "لم يعثر على أية سجلات",
+                    "sInfo":         "إظهار _START_ إلى _END_ من أصل _TOTAL_ مدخل",
+                    "sInfoEmpty":    "يعرض 0 إلى 0 من أصل 0 سجل",
+                    "sInfoFiltered": "(منتقاة من مجموع _MAX_ مُدخل)",
+                    "sInfoPostFix":  "",
+                    "sSearch":       "ابحث",
+                    "sUrl":          "",
+                    "oPaginate": {
+                        "sFirst":    "الأول",
+                        "sPrevious": "السابق",
+                        "sNext":     "التالي",
+                        "sLast":     "الأخير"
+                    }
+                }
+            });
+
+        });
+    </script>
+{% endblock %}
