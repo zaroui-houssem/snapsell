@@ -398,3 +398,31 @@ and the repository exists.
  DEBUG [eda3cd70] Command: [ -f /var/www/snapsell/shared/app/config/parameters.yml ]
  DEBUG [eda3cd70] Finished in 1.087 seconds with exit status 1 (failed).
  ERROR linked file /var/www/snapsell/shared/app/config/parameters.yml does not exist on 104.236.218.3
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-10-06 21:19:26 +0200 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [3e88506d] Running /usr/bin/env mkdir -p /tmp as root@104.236.218.3
+ DEBUG [3e88506d] Command: /usr/bin/env mkdir -p /tmp
+  INFO [3e88506d] Finished in 19.913 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 0.0%
+  INFO Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 100.0%
+  INFO [09966837] Running /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh as root@104.236.218.3
+ DEBUG [09966837] Command: /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh
+  INFO [09966837] Finished in 9.770 seconds with exit status 0 (successful).
+  INFO [59abbce1] Running /usr/bin/env git ls-remote --heads https://github.com/zaroui-houssem/snapsell.git as root@104.236.218.3
+ DEBUG [59abbce1] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-snapsell_app-production-AS.sh" ; /usr/bin/env git ls-remote --heads https://github.com/zaroui-houssem/snapsell.git )
+ DEBUG [59abbce1] 	869b355ce5b1cd284bddd6f3954a9d923727598a	refs/heads/master
+  INFO [59abbce1] Finished in 117.130 seconds with exit status 0 (successful).
+  INFO [b42d7c57] Running /usr/bin/env mkdir -p /var/www/snapsell/shared /var/www/snapsell/releases as root@104.236.218.3
+ DEBUG [b42d7c57] Command: /usr/bin/env mkdir -p /var/www/snapsell/shared /var/www/snapsell/releases
+  INFO [b42d7c57] Finished in 0.822 seconds with exit status 0 (successful).
+  INFO [f41afabe] Running /usr/bin/env mkdir -p /var/www/snapsell/shared/web/images /var/www/snapsell/shared/web/uploads/media as root@104.236.218.3
+ DEBUG [f41afabe] Command: /usr/bin/env mkdir -p /var/www/snapsell/shared/web/images /var/www/snapsell/shared/web/uploads/media
+  INFO [f41afabe] Finished in 0.961 seconds with exit status 0 (successful).
+  INFO [8e284cdc] Running /usr/bin/env mkdir -p /var/www/snapsell/shared/app/config as root@104.236.218.3
+ DEBUG [8e284cdc] Command: /usr/bin/env mkdir -p /var/www/snapsell/shared/app/config
+  INFO [8e284cdc] Finished in 0.385 seconds with exit status 0 (successful).
+ DEBUG [d133e13c] Running [ -f /var/www/snapsell/shared/app/config/parameters.yml ] as root@104.236.218.3
+ DEBUG [d133e13c] Command: [ -f /var/www/snapsell/shared/app/config/parameters.yml ]
+ DEBUG [d133e13c] Finished in 0.683 seconds with exit status 1 (failed).
+ ERROR linked file /var/www/snapsell/shared/app/config/parameters.yml does not exist on 104.236.218.3
