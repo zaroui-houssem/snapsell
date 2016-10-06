@@ -36,3 +36,62 @@ and the repository exists.
 
 Please make sure you have the correct access rights
 and the repository exists.
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-10-06 17:54:15 +0200 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [d5f75cd5] Running /usr/bin/env mkdir -p /tmp as badrsn@104.236.218.3
+ DEBUG [d5f75cd5] Command: /usr/bin/env mkdir -p /tmp
+  INFO [d5f75cd5] Finished in 16.125 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 0.0%
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-10-06 17:56:42 +0200 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [c4ba823a] Running /usr/bin/env mkdir -p /tmp as badrsn@104.236.218.3
+ DEBUG [c4ba823a] Command: /usr/bin/env mkdir -p /tmp
+  INFO [c4ba823a] Finished in 8.388 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 0.0%
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-10-06 18:01:16 +0200 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [da6ecf57] Running /usr/bin/env mkdir -p /tmp as badrsn@104.236.218.3
+ DEBUG [da6ecf57] Command: /usr/bin/env mkdir -p /tmp
+  INFO [da6ecf57] Finished in 16.162 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 0.0%
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-10-06 18:03:13 +0200 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [d3c98219] Running /usr/bin/env mkdir -p /tmp as root@104.236.218.3
+ DEBUG [d3c98219] Command: /usr/bin/env mkdir -p /tmp
+  INFO [d3c98219] Finished in 5.880 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 0.0%
+  INFO Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 100.0%
+  INFO [24679f43] Running /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh as root@104.236.218.3
+ DEBUG [24679f43] Command: /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh
+  INFO [24679f43] Finished in 0.340 seconds with exit status 0 (successful).
+  INFO [b654162e] Running /usr/bin/env git ls-remote --heads git@github.com:zaroui-houssem/snapsell.git as root@104.236.218.3
+ DEBUG [b654162e] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-snapsell_app-production-AS.sh" ; /usr/bin/env git ls-remote --heads git@github.com:zaroui-houssem/snapsell.git )
+ DEBUG [b654162e] 	Warning: Permanently added 'github.com,192.30.253.113' (RSA) to the list of known hosts.
+ DEBUG [b654162e] 	Permission denied (publickey).
+ DEBUG [b654162e] 	fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-10-06 18:37:21 +0200 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [0403c010] Running /usr/bin/env mkdir -p /tmp as root@104.236.218.3
+ DEBUG [0403c010] Command: /usr/bin/env mkdir -p /tmp
+  INFO [0403c010] Finished in 19.344 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 0.0%
+  INFO Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 100.0%
+  INFO [2b25634e] Running /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh as root@104.236.218.3
+ DEBUG [2b25634e] Command: /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh
+  INFO [2b25634e] Finished in 0.335 seconds with exit status 0 (successful).
+  INFO [7403399a] Running /usr/bin/env git ls-remote --heads git@github.com:zaroui-houssem/snapsell.git as root@104.236.218.3
+ DEBUG [7403399a] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-snapsell_app-production-AS.sh" ; /usr/bin/env git ls-remote --heads git@github.com:zaroui-houssem/snapsell.git )
+ DEBUG [7403399a] 	Warning: Permanently added the RSA host key for IP address '192.30.253.112' to the list of known hosts.
+ DEBUG [7403399a] 	Permission denied (publickey).
+ DEBUG [7403399a] 	fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.

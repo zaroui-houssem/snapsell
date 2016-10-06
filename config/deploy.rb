@@ -2,7 +2,7 @@
 lock '3.6.1'
 
 set :application, 'snapsell_app'
-set :repo_url, 'file:///C:\wamp\www\snapsellwebservice'
+set :repo_url, 'git@github.com:zaroui-houssem/snapsell.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
