@@ -95,3 +95,306 @@ and the repository exists.
 
 Please make sure you have the correct access rights
 and the repository exists.
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-10-06 18:49:20 +0200 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [77551855] Running /usr/bin/env mkdir -p /tmp as root@104.236.218.3
+ DEBUG [77551855] Command: /usr/bin/env mkdir -p /tmp
+  INFO [77551855] Finished in 14.772 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 0.0%
+  INFO Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 100.0%
+  INFO [f59a6be2] Running /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh as root@104.236.218.3
+ DEBUG [f59a6be2] Command: /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh
+  INFO [f59a6be2] Finished in 0.352 seconds with exit status 0 (successful).
+  INFO [bc11ee1d] Running /usr/bin/env git ls-remote --heads git@github.com:zaroui-houssem/snapsell.git as root@104.236.218.3
+ DEBUG [bc11ee1d] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-snapsell_app-production-AS.sh" ; /usr/bin/env git ls-remote --heads git@github.com:zaroui-houssem/snapsell.git )
+ DEBUG [bc11ee1d] 	Permission denied (publickey).
+ DEBUG [bc11ee1d] 	fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-10-06 19:21:36 +0200 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [f72afd57] Running /usr/bin/env mkdir -p /tmp as root@104.236.218.3
+ DEBUG [f72afd57] Command: /usr/bin/env mkdir -p /tmp
+  INFO [f72afd57] Finished in 9.396 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 0.0%
+  INFO Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 100.0%
+  INFO [b18c062a] Running /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh as root@104.236.218.3
+ DEBUG [b18c062a] Command: /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh
+  INFO [b18c062a] Finished in 0.364 seconds with exit status 0 (successful).
+  INFO [32e98aa0] Running /usr/bin/env git ls-remote --heads git@github.com:zaroui-houssem/snapsell.git as root@104.236.218.3
+ DEBUG [32e98aa0] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-snapsell_app-production-AS.sh" ; /usr/bin/env git ls-remote --heads git@github.com:zaroui-houssem/snapsell.git )
+ DEBUG [32e98aa0] 	Permission denied (publickey).
+ DEBUG [32e98aa0] 	fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-10-06 19:26:12 +0200 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [9bc8f17f] Running /usr/bin/env mkdir -p /tmp as root@104.236.218.3
+ DEBUG [9bc8f17f] Command: /usr/bin/env mkdir -p /tmp
+  INFO [9bc8f17f] Finished in 22.935 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 0.0%
+  INFO Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 100.0%
+  INFO [d2547a9b] Running /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh as root@104.236.218.3
+ DEBUG [d2547a9b] Command: /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh
+  INFO [d2547a9b] Finished in 1.038 seconds with exit status 0 (successful).
+  INFO [219a2fcc] Running /usr/bin/env git ls-remote --heads https://github.com/zaroui-houssem/snapsell.git as root@104.236.218.3
+ DEBUG [219a2fcc] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-snapsell_app-production-AS.sh" ; /usr/bin/env git ls-remote --heads https://github.com/zaroui-houssem/snapsell.git )
+ DEBUG [219a2fcc] 	869b355ce5b1cd284bddd6f3954a9d923727598a	refs/heads/master
+  INFO [219a2fcc] Finished in 0.736 seconds with exit status 0 (successful).
+  INFO [4999bfb7] Running /usr/bin/env mkdir -p /var/www/snapsell/shared /var/www/snapsell/releases as root@104.236.218.3
+ DEBUG [4999bfb7] Command: /usr/bin/env mkdir -p /var/www/snapsell/shared /var/www/snapsell/releases
+  INFO [4999bfb7] Finished in 0.349 seconds with exit status 0 (successful).
+ DEBUG [cf6adef6] Running [ -f /var/www/snapsell/current/REVISION ] as root@104.236.218.3
+ DEBUG [cf6adef6] Command: [ -f /var/www/snapsell/current/REVISION ]
+ DEBUG [cf6adef6] Finished in 0.386 seconds with exit status 1 (failed).
+ DEBUG [44ad4be0] Running [ -f /var/www/snapsell/repo/HEAD ] as root@104.236.218.3
+ DEBUG [44ad4be0] Command: [ -f /var/www/snapsell/repo/HEAD ]
+ DEBUG [44ad4be0] Finished in 0.343 seconds with exit status 1 (failed).
+ DEBUG [9aa84582] Running if test ! -d /var/www/snapsell; then echo "Directory does not exist '/var/www/snapsell'" 1>&2; false; fi as root@104.236.218.3
+ DEBUG [9aa84582] Command: if test ! -d /var/www/snapsell; then echo "Directory does not exist '/var/www/snapsell'" 1>&2; false; fi
+ DEBUG [9aa84582] Finished in 0.360 seconds with exit status 0 (successful).
+  INFO [2af2ce50] Running /usr/bin/env git clone --mirror https://github.com/zaroui-houssem/snapsell.git /var/www/snapsell/repo as root@104.236.218.3
+ DEBUG [2af2ce50] Command: cd /var/www/snapsell && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-snapsell_app-production-AS.sh" ; /usr/bin/env git clone --mirror https://github.com/zaroui-houssem/snapsell.git /var/www/snapsell/repo )
+ DEBUG [2af2ce50] 	Cloning into bare repository '/var/www/snapsell/repo'...
+  INFO [2af2ce50] Finished in 1.898 seconds with exit status 0 (successful).
+ DEBUG [2dc1e75c] Running if test ! -d /var/www/snapsell/repo; then echo "Directory does not exist '/var/www/snapsell/repo'" 1>&2; false; fi as root@104.236.218.3
+ DEBUG [2dc1e75c] Command: if test ! -d /var/www/snapsell/repo; then echo "Directory does not exist '/var/www/snapsell/repo'" 1>&2; false; fi
+ DEBUG [2dc1e75c] Finished in 0.367 seconds with exit status 0 (successful).
+  INFO [c7a60e7e] Running /usr/bin/env git remote update --prune as root@104.236.218.3
+ DEBUG [c7a60e7e] Command: cd /var/www/snapsell/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-snapsell_app-production-AS.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [c7a60e7e] 	Fetching origin
+  INFO [c7a60e7e] Finished in 0.935 seconds with exit status 0 (successful).
+ DEBUG [42b190e3] Running if test ! -d /var/www/snapsell/repo; then echo "Directory does not exist '/var/www/snapsell/repo'" 1>&2; false; fi as root@104.236.218.3
+ DEBUG [42b190e3] Command: if test ! -d /var/www/snapsell/repo; then echo "Directory does not exist '/var/www/snapsell/repo'" 1>&2; false; fi
+ DEBUG [42b190e3] Finished in 0.531 seconds with exit status 0 (successful).
+  INFO [371fd3fe] Running /usr/bin/env mkdir -p /var/www/snapsell/releases/20161006172646 as root@104.236.218.3
+ DEBUG [371fd3fe] Command: cd /var/www/snapsell/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-snapsell_app-production-AS.sh" ; /usr/bin/env mkdir -p /var/www/snapsell/releases/20161006172646 )
+  INFO [371fd3fe] Finished in 0.386 seconds with exit status 0 (successful).
+  INFO [f9cdbe40] Running /usr/bin/env git archive master | tar -x -f - -C /var/www/snapsell/releases/20161006172646 as root@104.236.218.3
+ DEBUG [f9cdbe40] Command: cd /var/www/snapsell/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-snapsell_app-production-AS.sh" ; /usr/bin/env git archive master | tar -x -f - -C /var/www/snapsell/releases/20161006172646 )
+  INFO [f9cdbe40] Finished in 0.786 seconds with exit status 0 (successful).
+ DEBUG [65a8792a] Running if test ! -d /var/www/snapsell/repo; then echo "Directory does not exist '/var/www/snapsell/repo'" 1>&2; false; fi as root@104.236.218.3
+ DEBUG [65a8792a] Command: if test ! -d /var/www/snapsell/repo; then echo "Directory does not exist '/var/www/snapsell/repo'" 1>&2; false; fi
+ DEBUG [65a8792a] Finished in 0.367 seconds with exit status 0 (successful).
+ DEBUG [bf9df74f] Running /usr/bin/env git rev-list --max-count=1 master as root@104.236.218.3
+ DEBUG [bf9df74f] Command: cd /var/www/snapsell/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-snapsell_app-production-AS.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [bf9df74f] 	869b355ce5b1cd284bddd6f3954a9d923727598a
+ DEBUG [bf9df74f] Finished in 0.671 seconds with exit status 0 (successful).
+ DEBUG [acf66be4] Running if test ! -d /var/www/snapsell/releases/20161006172646; then echo "Directory does not exist '/var/www/snapsell/releases/20161006172646'" 1>&2; false; fi as root@104.236.218.3
+ DEBUG [acf66be4] Command: if test ! -d /var/www/snapsell/releases/20161006172646; then echo "Directory does not exist '/var/www/snapsell/releases/20161006172646'" 1>&2; false; fi
+ DEBUG [acf66be4] Finished in 0.672 seconds with exit status 0 (successful).
+  INFO [a375e3c4] Running /usr/bin/env echo "869b355ce5b1cd284bddd6f3954a9d923727598a" >> REVISION as root@104.236.218.3
+ DEBUG [a375e3c4] Command: cd /var/www/snapsell/releases/20161006172646 && /usr/bin/env echo "869b355ce5b1cd284bddd6f3954a9d923727598a" >> REVISION
+  INFO [a375e3c4] Finished in 0.367 seconds with exit status 0 (successful).
+  INFO [03383fed] Running /usr/bin/env ln -s /var/www/snapsell/releases/20161006172646 /var/www/snapsell/releases/current as root@104.236.218.3
+ DEBUG [03383fed] Command: /usr/bin/env ln -s /var/www/snapsell/releases/20161006172646 /var/www/snapsell/releases/current
+  INFO [03383fed] Finished in 0.391 seconds with exit status 0 (successful).
+  INFO [106e07fb] Running /usr/bin/env mv /var/www/snapsell/releases/current /var/www/snapsell as root@104.236.218.3
+ DEBUG [106e07fb] Command: /usr/bin/env mv /var/www/snapsell/releases/current /var/www/snapsell
+  INFO [106e07fb] Finished in 0.670 seconds with exit status 0 (successful).
+ DEBUG [3a0f85f9] Running /usr/bin/env ls -xtr /var/www/snapsell/releases as root@104.236.218.3
+ DEBUG [3a0f85f9] Command: /usr/bin/env ls -xtr /var/www/snapsell/releases
+ DEBUG [3a0f85f9] 	20161006172646
+ DEBUG [3a0f85f9] Finished in 0.644 seconds with exit status 0 (successful).
+ DEBUG [53a71b13] Running if test ! -d /var/www/snapsell/releases; then echo "Directory does not exist '/var/www/snapsell/releases'" 1>&2; false; fi as root@104.236.218.3
+ DEBUG [53a71b13] Command: if test ! -d /var/www/snapsell/releases; then echo "Directory does not exist '/var/www/snapsell/releases'" 1>&2; false; fi
+ DEBUG [53a71b13] Finished in 0.963 seconds with exit status 0 (successful).
+  INFO [619cd487] Running /usr/bin/env echo "Branch master (at 869b355ce5b1cd284bddd6f3954a9d923727598a) deployed as release 20161006172646 by AS" >> /var/www/snapsell/revisions.log as root@104.236.218.3
+ DEBUG [619cd487] Command: cd /var/www/snapsell/releases && /usr/bin/env echo "Branch master (at 869b355ce5b1cd284bddd6f3954a9d923727598a) deployed as release 20161006172646 by AS" >> /var/www/snapsell/revisions.log
+  INFO [619cd487] Finished in 1.573 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-10-06 20:18:28 +0200 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [9ffbbb8b] Running /usr/bin/env mkdir -p /tmp as root@104.236.218.3
+ DEBUG [9ffbbb8b] Command: /usr/bin/env mkdir -p /tmp
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-10-06 20:20:10 +0200 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [99f2839e] Running /usr/bin/env mkdir -p /tmp as root@104.236.218.3
+ DEBUG [99f2839e] Command: /usr/bin/env mkdir -p /tmp
+  INFO [99f2839e] Finished in 21.547 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 0.0%
+  INFO Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 100.0%
+  INFO [e6ae1ac2] Running /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh as root@104.236.218.3
+ DEBUG [e6ae1ac2] Command: /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh
+  INFO [e6ae1ac2] Finished in 0.340 seconds with exit status 0 (successful).
+  INFO [1f2cff38] Running /usr/bin/env git ls-remote --heads https://github.com/zaroui-houssem/snapsell.git as root@104.236.218.3
+ DEBUG [1f2cff38] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-snapsell_app-production-AS.sh" ; /usr/bin/env git ls-remote --heads https://github.com/zaroui-houssem/snapsell.git )
+ DEBUG [1f2cff38] 	869b355ce5b1cd284bddd6f3954a9d923727598a	refs/heads/master
+  INFO [1f2cff38] Finished in 0.669 seconds with exit status 0 (successful).
+  INFO [ac5af030] Running /usr/bin/env mkdir -p /var/www/snapsell/shared /var/www/snapsell/releases as root@104.236.218.3
+ DEBUG [ac5af030] Command: /usr/bin/env mkdir -p /var/www/snapsell/shared /var/www/snapsell/releases
+  INFO [ac5af030] Finished in 0.337 seconds with exit status 0 (successful).
+ DEBUG [6dfc58de] Running [ -f /var/www/snapsell/current/REVISION ] as root@104.236.218.3
+ DEBUG [6dfc58de] Command: [ -f /var/www/snapsell/current/REVISION ]
+ DEBUG [6dfc58de] Finished in 0.836 seconds with exit status 0 (successful).
+ DEBUG [b2bc9827] Running /usr/bin/env cat /var/www/snapsell/current/REVISION 2>/dev/null as root@104.236.218.3
+ DEBUG [b2bc9827] Command: /usr/bin/env cat /var/www/snapsell/current/REVISION 2>/dev/null
+ DEBUG [b2bc9827] 	869b355ce5b1cd284bddd6f3954a9d923727598a
+ DEBUG [b2bc9827] Finished in 0.652 seconds with exit status 0 (successful).
+ DEBUG [b98598e7] Running [ -f /var/www/snapsell/repo/HEAD ] as root@104.236.218.3
+ DEBUG [b98598e7] Command: [ -f /var/www/snapsell/repo/HEAD ]
+ DEBUG [b98598e7] Finished in 0.351 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /var/www/snapsell/repo
+ DEBUG [189fd401] Running if test ! -d /var/www/snapsell/repo; then echo "Directory does not exist '/var/www/snapsell/repo'" 1>&2; false; fi as root@104.236.218.3
+ DEBUG [189fd401] Command: if test ! -d /var/www/snapsell/repo; then echo "Directory does not exist '/var/www/snapsell/repo'" 1>&2; false; fi
+ DEBUG [189fd401] Finished in 1.036 seconds with exit status 0 (successful).
+  INFO [8411437a] Running /usr/bin/env git remote update --prune as root@104.236.218.3
+ DEBUG [8411437a] Command: cd /var/www/snapsell/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-snapsell_app-production-AS.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [8411437a] 	Fetching origin
+  INFO [8411437a] Finished in 1.380 seconds with exit status 0 (successful).
+ DEBUG [8361784b] Running if test ! -d /var/www/snapsell/repo; then echo "Directory does not exist '/var/www/snapsell/repo'" 1>&2; false; fi as root@104.236.218.3
+ DEBUG [8361784b] Command: if test ! -d /var/www/snapsell/repo; then echo "Directory does not exist '/var/www/snapsell/repo'" 1>&2; false; fi
+ DEBUG [8361784b] Finished in 0.795 seconds with exit status 0 (successful).
+  INFO [800a2143] Running /usr/bin/env mkdir -p /var/www/snapsell/releases/20161006182045 as root@104.236.218.3
+ DEBUG [800a2143] Command: cd /var/www/snapsell/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-snapsell_app-production-AS.sh" ; /usr/bin/env mkdir -p /var/www/snapsell/releases/20161006182045 )
+  INFO [800a2143] Finished in 0.383 seconds with exit status 0 (successful).
+  INFO [e3142ca6] Running /usr/bin/env git archive master | tar -x -f - -C /var/www/snapsell/releases/20161006182045 as root@104.236.218.3
+ DEBUG [e3142ca6] Command: cd /var/www/snapsell/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-snapsell_app-production-AS.sh" ; /usr/bin/env git archive master | tar -x -f - -C /var/www/snapsell/releases/20161006182045 )
+  INFO [e3142ca6] Finished in 0.827 seconds with exit status 0 (successful).
+ DEBUG [1952e2c9] Running if test ! -d /var/www/snapsell/repo; then echo "Directory does not exist '/var/www/snapsell/repo'" 1>&2; false; fi as root@104.236.218.3
+ DEBUG [1952e2c9] Command: if test ! -d /var/www/snapsell/repo; then echo "Directory does not exist '/var/www/snapsell/repo'" 1>&2; false; fi
+ DEBUG [1952e2c9] Finished in 0.517 seconds with exit status 0 (successful).
+ DEBUG [8ab21ce6] Running /usr/bin/env git rev-list --max-count=1 master as root@104.236.218.3
+ DEBUG [8ab21ce6] Command: cd /var/www/snapsell/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-snapsell_app-production-AS.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [8ab21ce6] 	869b355ce5b1cd284bddd6f3954a9d923727598a
+ DEBUG [8ab21ce6] Finished in 0.351 seconds with exit status 0 (successful).
+ DEBUG [6e8a8745] Running if test ! -d /var/www/snapsell/releases/20161006182045; then echo "Directory does not exist '/var/www/snapsell/releases/20161006182045'" 1>&2; false; fi as root@104.236.218.3
+ DEBUG [6e8a8745] Command: if test ! -d /var/www/snapsell/releases/20161006182045; then echo "Directory does not exist '/var/www/snapsell/releases/20161006182045'" 1>&2; false; fi
+ DEBUG [6e8a8745] Finished in 1.251 seconds with exit status 0 (successful).
+  INFO [c33683dd] Running /usr/bin/env echo "869b355ce5b1cd284bddd6f3954a9d923727598a" >> REVISION as root@104.236.218.3
+ DEBUG [c33683dd] Command: cd /var/www/snapsell/releases/20161006182045 && /usr/bin/env echo "869b355ce5b1cd284bddd6f3954a9d923727598a" >> REVISION
+  INFO [c33683dd] Finished in 0.947 seconds with exit status 0 (successful).
+  INFO [c1444e96] Running /usr/bin/env ln -s /var/www/snapsell/releases/20161006182045 /var/www/snapsell/releases/current as root@104.236.218.3
+ DEBUG [c1444e96] Command: /usr/bin/env ln -s /var/www/snapsell/releases/20161006182045 /var/www/snapsell/releases/current
+  INFO [c1444e96] Finished in 0.662 seconds with exit status 0 (successful).
+  INFO [7c15f164] Running /usr/bin/env mv /var/www/snapsell/releases/current /var/www/snapsell as root@104.236.218.3
+ DEBUG [7c15f164] Command: /usr/bin/env mv /var/www/snapsell/releases/current /var/www/snapsell
+  INFO [7c15f164] Finished in 0.358 seconds with exit status 0 (successful).
+ DEBUG [18927886] Running /usr/bin/env ls -xtr /var/www/snapsell/releases as root@104.236.218.3
+ DEBUG [18927886] Command: /usr/bin/env ls -xtr /var/www/snapsell/releases
+ DEBUG [18927886] 	20161006172646	20161006182045
+ DEBUG [18927886] Finished in 0.530 seconds with exit status 0 (successful).
+ DEBUG [112557ff] Running if test ! -d /var/www/snapsell/releases; then echo "Directory does not exist '/var/www/snapsell/releases'" 1>&2; false; fi as root@104.236.218.3
+ DEBUG [112557ff] Command: if test ! -d /var/www/snapsell/releases; then echo "Directory does not exist '/var/www/snapsell/releases'" 1>&2; false; fi
+ DEBUG [112557ff] Finished in 0.663 seconds with exit status 0 (successful).
+  INFO [3a79bdd6] Running /usr/bin/env echo "Branch master (at 869b355ce5b1cd284bddd6f3954a9d923727598a) deployed as release 20161006182045 by AS" >> /var/www/snapsell/revisions.log as root@104.236.218.3
+ DEBUG [3a79bdd6] Command: cd /var/www/snapsell/releases && /usr/bin/env echo "Branch master (at 869b355ce5b1cd284bddd6f3954a9d923727598a) deployed as release 20161006182045 by AS" >> /var/www/snapsell/revisions.log
+  INFO [3a79bdd6] Finished in 0.348 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-10-06 20:21:06 +0200 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [dd63f0b8] Running /usr/bin/env mkdir -p /tmp as root@104.236.218.3
+ DEBUG [dd63f0b8] Command: /usr/bin/env mkdir -p /tmp
+  INFO [dd63f0b8] Finished in 7.959 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 0.0%
+  INFO Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 100.0%
+  INFO [956fc43a] Running /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh as root@104.236.218.3
+ DEBUG [956fc43a] Command: /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh
+  INFO [956fc43a] Finished in 0.765 seconds with exit status 0 (successful).
+  INFO [fa00e234] Running /usr/bin/env git ls-remote --heads https://github.com/zaroui-houssem/snapsell.git as root@104.236.218.3
+ DEBUG [fa00e234] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-snapsell_app-production-AS.sh" ; /usr/bin/env git ls-remote --heads https://github.com/zaroui-houssem/snapsell.git )
+ DEBUG [fa00e234] 	869b355ce5b1cd284bddd6f3954a9d923727598a	refs/heads/master
+  INFO [fa00e234] Finished in 0.628 seconds with exit status 0 (successful).
+  INFO [c4f265e5] Running /usr/bin/env mkdir -p /var/www/snapsell/shared /var/www/snapsell/releases as root@104.236.218.3
+ DEBUG [c4f265e5] Command: /usr/bin/env mkdir -p /var/www/snapsell/shared /var/www/snapsell/releases
+  INFO [c4f265e5] Finished in 1.253 seconds with exit status 0 (successful).
+  INFO [3d34e3a2] Running /usr/bin/env mkdir -p /var/www/snapsell/shared/web/images /var/www/snapsell/shared/web/uploads/media as root@104.236.218.3
+ DEBUG [3d34e3a2] Command: /usr/bin/env mkdir -p /var/www/snapsell/shared/web/images /var/www/snapsell/shared/web/uploads/media
+  INFO [3d34e3a2] Finished in 3.974 seconds with exit status 0 (successful).
+  INFO [873568c8] Running /usr/bin/env mkdir -p /var/www/snapsell/shared/app/config as root@104.236.218.3
+ DEBUG [873568c8] Command: /usr/bin/env mkdir -p /var/www/snapsell/shared/app/config
+  INFO [873568c8] Finished in 1.216 seconds with exit status 0 (successful).
+ DEBUG [07d69ba0] Running [ -f /var/www/snapsell/shared/app/config/parameters.yml ] as root@104.236.218.3
+ DEBUG [07d69ba0] Command: [ -f /var/www/snapsell/shared/app/config/parameters.yml ]
+ DEBUG [07d69ba0] Finished in 0.669 seconds with exit status 1 (failed).
+ ERROR linked file /var/www/snapsell/shared/app/config/parameters.yml does not exist on 104.236.218.3
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-10-06 20:22:14 +0200 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [4e1e1bce] Running /usr/bin/env mkdir -p /tmp as root@104.236.218.3
+ DEBUG [4e1e1bce] Command: /usr/bin/env mkdir -p /tmp
+  INFO [4e1e1bce] Finished in 5.671 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 0.0%
+  INFO Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 100.0%
+  INFO [f384e227] Running /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh as root@104.236.218.3
+ DEBUG [f384e227] Command: /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh
+  INFO [f384e227] Finished in 0.690 seconds with exit status 0 (successful).
+  INFO [b07c6d80] Running /usr/bin/env git ls-remote --heads https://github.com/zaroui-houssem/snapsell.git as root@104.236.218.3
+ DEBUG [b07c6d80] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-snapsell_app-production-AS.sh" ; /usr/bin/env git ls-remote --heads https://github.com/zaroui-houssem/snapsell.git )
+ DEBUG [b07c6d80] 	869b355ce5b1cd284bddd6f3954a9d923727598a	refs/heads/master
+  INFO [b07c6d80] Finished in 1.008 seconds with exit status 0 (successful).
+  INFO [d09741fe] Running /usr/bin/env mkdir -p /var/www/snapsell/shared /var/www/snapsell/releases as root@104.236.218.3
+ DEBUG [d09741fe] Command: /usr/bin/env mkdir -p /var/www/snapsell/shared /var/www/snapsell/releases
+  INFO [d09741fe] Finished in 0.393 seconds with exit status 0 (successful).
+  INFO [fb8c9736] Running /usr/bin/env mkdir -p /var/www/snapsell/shared/web/images /var/www/snapsell/shared/web/uploads/media as root@104.236.218.3
+ DEBUG [fb8c9736] Command: /usr/bin/env mkdir -p /var/www/snapsell/shared/web/images /var/www/snapsell/shared/web/uploads/media
+  INFO [fb8c9736] Finished in 0.687 seconds with exit status 0 (successful).
+  INFO [72ba4059] Running /usr/bin/env mkdir -p /var/www/snapsell/shared/app/config as root@104.236.218.3
+ DEBUG [72ba4059] Command: /usr/bin/env mkdir -p /var/www/snapsell/shared/app/config
+  INFO [72ba4059] Finished in 0.980 seconds with exit status 0 (successful).
+ DEBUG [58bca4bf] Running [ -f /var/www/snapsell/shared/app/config/parameters.yml ] as root@104.236.218.3
+ DEBUG [58bca4bf] Command: [ -f /var/www/snapsell/shared/app/config/parameters.yml ]
+ DEBUG [58bca4bf] Finished in 5.146 seconds with exit status 1 (failed).
+ ERROR linked file /var/www/snapsell/shared/app/config/parameters.yml does not exist on 104.236.218.3
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-10-06 20:46:34 +0200 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [4fa102d5] Running /usr/bin/env mkdir -p /tmp as root@104.236.218.3
+ DEBUG [4fa102d5] Command: /usr/bin/env mkdir -p /tmp
+  INFO [4fa102d5] Finished in 54.967 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 0.0%
+  INFO Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 100.0%
+  INFO [ea24ac02] Running /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh as root@104.236.218.3
+ DEBUG [ea24ac02] Command: /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh
+  INFO [ea24ac02] Finished in 0.381 seconds with exit status 0 (successful).
+  INFO [b06d1797] Running /usr/bin/env git ls-remote --heads https://github.com/zaroui-houssem/snapsell.git as root@104.236.218.3
+ DEBUG [b06d1797] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-snapsell_app-production-AS.sh" ; /usr/bin/env git ls-remote --heads https://github.com/zaroui-houssem/snapsell.git )
+ DEBUG [b06d1797] 	869b355ce5b1cd284bddd6f3954a9d923727598a	refs/heads/master
+  INFO [b06d1797] Finished in 0.911 seconds with exit status 0 (successful).
+  INFO [af03cc87] Running /usr/bin/env mkdir -p /var/www/snapsell/shared /var/www/snapsell/releases as root@104.236.218.3
+ DEBUG [af03cc87] Command: /usr/bin/env mkdir -p /var/www/snapsell/shared /var/www/snapsell/releases
+  INFO [af03cc87] Finished in 0.838 seconds with exit status 0 (successful).
+  INFO [968611c0] Running /usr/bin/env mkdir -p /var/www/snapsell/shared/web/images /var/www/snapsell/shared/web/uploads/media as root@104.236.218.3
+ DEBUG [968611c0] Command: /usr/bin/env mkdir -p /var/www/snapsell/shared/web/images /var/www/snapsell/shared/web/uploads/media
+  INFO [968611c0] Finished in 0.475 seconds with exit status 0 (successful).
+  INFO [3f401c06] Running /usr/bin/env mkdir -p /var/www/snapsell/shared/app/config as root@104.236.218.3
+ DEBUG [3f401c06] Command: /usr/bin/env mkdir -p /var/www/snapsell/shared/app/config
+  INFO [3f401c06] Finished in 0.385 seconds with exit status 0 (successful).
+ DEBUG [76cf10f3] Running [ -f /var/www/snapsell/shared/app/config/parameters.yml ] as root@104.236.218.3
+ DEBUG [76cf10f3] Command: [ -f /var/www/snapsell/shared/app/config/parameters.yml ]
+ DEBUG [76cf10f3] Finished in 0.767 seconds with exit status 1 (failed).
+ ERROR linked file /var/www/snapsell/shared/app/config/parameters.yml does not exist on 104.236.218.3
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-10-06 20:50:22 +0200 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [ea1959aa] Running /usr/bin/env mkdir -p /tmp as root@104.236.218.3
+ DEBUG [ea1959aa] Command: /usr/bin/env mkdir -p /tmp
+  INFO [ea1959aa] Finished in 4.434 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 0.0%
+  INFO Uploading /tmp/git-ssh-snapsell_app-production-AS.sh 100.0%
+  INFO [23371f1c] Running /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh as root@104.236.218.3
+ DEBUG [23371f1c] Command: /usr/bin/env chmod 700 /tmp/git-ssh-snapsell_app-production-AS.sh
+  INFO [23371f1c] Finished in 0.836 seconds with exit status 0 (successful).
+  INFO [2ef1d536] Running /usr/bin/env git ls-remote --heads https://github.com/zaroui-houssem/snapsell.git as root@104.236.218.3
+ DEBUG [2ef1d536] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-snapsell_app-production-AS.sh" ; /usr/bin/env git ls-remote --heads https://github.com/zaroui-houssem/snapsell.git )
+ DEBUG [2ef1d536] 	869b355ce5b1cd284bddd6f3954a9d923727598a	refs/heads/master
+  INFO [2ef1d536] Finished in 1.223 seconds with exit status 0 (successful).
+  INFO [dc3c4cb8] Running /usr/bin/env mkdir -p /var/www/snapsell/shared /var/www/snapsell/releases as root@104.236.218.3
+ DEBUG [dc3c4cb8] Command: /usr/bin/env mkdir -p /var/www/snapsell/shared /var/www/snapsell/releases
+  INFO [dc3c4cb8] Finished in 0.366 seconds with exit status 0 (successful).
+  INFO [6aeffc95] Running /usr/bin/env mkdir -p /var/www/snapsell/shared/web/images /var/www/snapsell/shared/web/uploads/media as root@104.236.218.3
+ DEBUG [6aeffc95] Command: /usr/bin/env mkdir -p /var/www/snapsell/shared/web/images /var/www/snapsell/shared/web/uploads/media
+  INFO [6aeffc95] Finished in 0.728 seconds with exit status 0 (successful).
+  INFO [2dfde05a] Running /usr/bin/env mkdir -p /var/www/snapsell/shared/app/config as root@104.236.218.3
+ DEBUG [2dfde05a] Command: /usr/bin/env mkdir -p /var/www/snapsell/shared/app/config
+  INFO [2dfde05a] Finished in 0.720 seconds with exit status 0 (successful).
+ DEBUG [eda3cd70] Running [ -f /var/www/snapsell/shared/app/config/parameters.yml ] as root@104.236.218.3
+ DEBUG [eda3cd70] Command: [ -f /var/www/snapsell/shared/app/config/parameters.yml ]
+ DEBUG [eda3cd70] Finished in 1.087 seconds with exit status 1 (failed).
+ ERROR linked file /var/www/snapsell/shared/app/config/parameters.yml does not exist on 104.236.218.3
